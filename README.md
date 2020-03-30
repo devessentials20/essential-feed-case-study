@@ -49,6 +49,36 @@ Then app should display an error message
 #### No connectivity - error course (sad path)
 1. System delivers error
 
+### Load Feed Fallback (Cache) Use Case
+#### Data:
+* Max age
+
+#### Primary Course (Happy Path)
+1. Execute "Retrieve Feed Items" command with above data.
+2. System fetches feed data from cache.
+3. System validates cache age.
+4. System creates feed items from cached data.
+5. System delivers feed items.
+
+#### Expired Cache Course (Sad Path)
+1. System delivers no feed items.
+
+#### Empty Cache Course (Sad Path)
+1. System delivers no feed items.
+
+### Save feed Items Use Case
+#### Data:
+* Feed items
+
+#### Primary Course (Happy Path)
+1. Execute "Save Feed Items" command with above data.
+2. System encodes feed items.
+3. System timestamps the new cache.
+4. System replaces the cache with new data.
+5. System delivers success message.
+
+
+
 
 
 
