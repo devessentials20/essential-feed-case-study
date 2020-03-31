@@ -77,6 +77,17 @@ Then app should display an error message
 4. System replaces the cache with new data.
 5. System delivers success message.
 
+### Flow Chart
+
+![Image of FlowChart](https://github.com/devessentials20/essential-feed-case-study/blob/master/EssentialFeedApp%20-%20FlowChart.png)
+
+### Architecture
+![Image of Architecture](https://github.com/devessentials20/essential-feed-case-study/blob/master/DependencyDiagram_Composition.png)
+
+## Model Specs
+
+### Feed Item
+
 
 
 
