@@ -95,6 +95,40 @@ Property | Type
 ```location```   | ```String``` (optional)
 ```imageURL```    | ```URL```
 
+### Payload Contract
+```
+GET *url* (TBD)
+
+200 RESPONSE
+
+{
+      "items" : [
+               {
+                    "id" : "a UUID",
+                    "description" : "a Description",
+                    "location" : "a Location",
+                    "image" : "https://a-image.url"
+               },
+               {
+                    "id" : "another UUID",
+                    "description" : "another Description",
+                    "image" : "https://another-image.url"
+               },
+               {
+                    "id" : "even another UUID",
+                    "location" : "even another Location",
+                    "image" : "https://even-another-image.url"
+               },
+               {
+                    "id" : "yet another UUID",
+                    "image" : "https://yet-another-image.url"
+               }
+               .....
+      ]
+
+}
+```
+
 
 
 
