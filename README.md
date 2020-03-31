@@ -88,6 +88,12 @@ Then app should display an error message
 
 ### Feed Item
 
+Property | Type
+-------- | --------
+```id```       | ```UUID```
+```description``` | ```String``` (optional)
+```location```   | ```String``` (optional)
+```imageURL```    | ```URL```
 
 
 
