@@ -21,9 +21,16 @@ Then app should should display the latest feed from remote
 ### Scenarios (Acceptance Criteria)
 ```
 Given the cusotmer doesn't have connectivity
-And their cached version of the feed
+  And there's cached version of the feed
+  And the cache is less than seven days old
 when customer request to see the feed
 Then the app should display the latest feed saved
+
+Given the cusotmer doesn't have connectivity
+  And there's cached version of the feed
+  And the cache is seven days old or more
+when customer request to see the feed
+Then app should display an error message
 
 Given the customer doesn't have connectivity
 And the cache is empty
@@ -33,7 +40,7 @@ Then app should display an error message
 
 ## Use Cases
 
-### Load Feed Use Case
+### Load Feed From Remote Use Case
 
 #### Data:
 * URL
@@ -46,38 +53,49 @@ Then app should display an error message
 5. System delivers feed items.
 
 #### Invalid data - error course (sad path)
-1. System delivers error
+1. System delivers invalid data error
 
 #### No connectivity - error course (sad path)
-1. System delivers error
+1. System delivers connectivity error
 
-### Load Feed Fallback (Cache) Use Case
-#### Data:
-* Max age
+
+### Load Feed From Cache Use Case
 
 #### Primary Course (Happy Path)
-1. Execute "Retrieve Feed Items" command with above data.
+1. Execute "Load Feed Items" command with above data.
 2. System fetches feed data from cache.
-3. System validates cache age.
+3. System validates cache is less than seven days old.
 4. System creates feed items from cached data.
 5. System delivers feed items.
 
+#### Error Course (Sad Path)
+1. System delivers error.
+
 #### Expired Cache Course (Sad Path)
-1. System delivers no feed items.
+1. System deletes cache.
+2. System delivers no feed items.
 
 #### Empty Cache Course (Sad Path)
 1. System delivers no feed items.
 
-### Save feed Items Use Case
+
+### Cache Feed Use Case
 #### Data:
 * Feed items
 
 #### Primary Course (Happy Path)
 1. Execute "Save Feed Items" command with above data.
-2. System encodes feed items.
-3. System timestamps the new cache.
-4. System replaces the cache with new data.
-5. System delivers success message.
+2. System deletes old cache data.
+3. System encodes feed items.
+4. System timestamps the new cache.
+5. System saves new cache data.
+6. System delivers success message.
+
+#### Deleting Error Course (Sad Path)
+1. System delivers error.
+
+#### Saving Error Course (Sad Path)
+1. System delivers error.
 
 ### Flow Chart
 
