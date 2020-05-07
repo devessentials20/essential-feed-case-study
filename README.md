@@ -63,13 +63,14 @@ Then app should display an error message
 
 #### Primary Course (Happy Path)
 1. Execute "Load Image Feed" command with above data.
-2. System fetches feed data from cache.
+2. System retrieves feed data from cache.
 3. System validates cache is less than seven days old.
 4. System creates image feed from cached data.
 5. System delivers image feed.
 
-#### Error Course (Sad Path)
-1. System delivers error.
+#### Retrieval Error Course (Sad Path)
+1. System deletes cache.
+2. System delivers error.
 
 #### Expired Cache Course (Sad Path)
 1. System deletes cache.
