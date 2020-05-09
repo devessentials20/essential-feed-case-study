@@ -75,12 +75,12 @@ class LoadFeedFromCacheUseCaseTests: XCTestCase {
         })
     }
     
-    func test_load_deletesCacheOnRetrievalError() {
+    func test_load_hasNoSideEffectsOnRetrievalError() {
         let (sut, store) = makeSUT()
         
         sut.load { _ in }
         store.completeRetrieval(with: anyNSError())
-        XCTAssertEqual(store.receivedMessages, [.retrieve, .deleteCacheFeed])
+        XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
     
     func test_load_doesNotDeletesCacheOnEmptyCache() {
@@ -136,14 +136,6 @@ class LoadFeedFromCacheUseCaseTests: XCTestCase {
         XCTAssertTrue(receivedResults.isEmpty)
     }
 
-
-
-    
-
-
-
-
-    
     //MARK: Helpers
     
     private func makeSUT(currentDate: @escaping () -> Date = Date.init, file: StaticString = #file, line: UInt = #line) -> (sut: LocalFeedLoader, store: FeedStoreSpy){
