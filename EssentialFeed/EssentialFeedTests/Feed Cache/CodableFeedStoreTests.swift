@@ -181,7 +181,7 @@ class CodableFeedStoreTests: XCTestCase {
         expect(sut, toRetrieve: .empty)
     }
     
-    func test_delete_deliversEmptyCacheOnNonEmptyCache() {
+    func test_delete_emptiedPreviousInsertedCache() {
         let sut = makeSUT()
         
         let insertionError = insert((feed: uniqueImageFeed().local, timestamp: Date()), to: sut)
