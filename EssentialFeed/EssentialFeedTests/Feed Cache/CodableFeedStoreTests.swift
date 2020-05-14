@@ -75,11 +75,13 @@ class CodableFeedStore {
         if fileManager.fileExists(atPath: storeURL.path) {
             do {
                 try fileManager.removeItem(at: storeURL)
+                completion(nil)
             } catch {
                 completion(error)
             }
+        }else {
+            completion(nil)
         }
-        
     }
 
 }
@@ -173,9 +175,12 @@ class CodableFeedStoreTests: XCTestCase {
     func test_delete_hasNoSideEffectsOnEmptyCache() {
         let sut = makeSUT()
         
+        let exp = expectation(description: "Wait for cache deletion")
         sut.deleteCacheFeed { deletionError in
             XCTAssertNil(deletionError, "Expected empty cache deletion to succeed")
+            exp.fulfill()
         }
+        wait(for: [exp], timeout: 1.0)
         
         expect(sut, toRetrieve: .empty)
     }
@@ -186,11 +191,25 @@ class CodableFeedStoreTests: XCTestCase {
         let insertionError = insert((feed: uniqueImageFeed().local, timestamp: Date()), to: sut)
         XCTAssertNil(insertionError, "Expected to insert cache successfully")
 
+        let exp = expectation(description: "Wait for cache deletion")
         sut.deleteCacheFeed { deletionError in
             XCTAssertNil(deletionError, "Expected non-empty cache deletion to succeed")
+            exp.fulfill()
         }
-        
+        wait(for: [exp], timeout: 1.0)
+
         expect(sut, toRetrieve: .empty)
+    }
+    
+    func test_delete_deliversErrorOnDeletionError() {
+        let noDeletePermissionURL = cacheDirectory()
+        let sut = makeSUT(storeURL: noDeletePermissionURL)
+        let exp = expectation(description: "Wait for cache deletion")
+        sut.deleteCacheFeed { error in
+            XCTAssertNotNil(error, "Expected cache deletion to fail")
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
     }
     
     
@@ -242,6 +261,10 @@ class CodableFeedStoreTests: XCTestCase {
     
     private func testSpecificStoreURL() -> URL {
         return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!.appendingPathComponent("\(type(of: self)).store")
+    }
+    
+    private func cacheDirectory() -> URL {
+        return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
     }
     
     private func setUpEmptyStoreState() {
