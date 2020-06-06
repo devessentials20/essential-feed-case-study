@@ -52,7 +52,6 @@ class EssentialFeedCacheIntegrationTests: XCTestCase {
 
         expect(sutToPerformLoad, toLoad: latestFeed)
     }
-
     
     // MARK: Helpers
     
