@@ -1,6 +1,6 @@
 # Essential Feed App - Image Feed Feature
 
-[![Build Status](https://travis-ci.com/devessentials20/essential-feed-case-study.svg?branch=master)](https://travis-ci.com/devessentials20/essential-feed-case-study)
+[![Build Status](https://travis-ci.com/panditpakhurde/essential-feed-case-study.svg?branch=master)](https://travis-ci.com/devessentials20/essential-feed-case-study)
 
 ## BDD Specs
 
