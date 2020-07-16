@@ -25,7 +25,7 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedImageCell" rowHeight="580" id="hW2-zc-3Pr">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedImageCell" rowHeight="580" id="hW2-zc-3Pr" customClass="FeedImageCell" customModule="Prototype" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44" width="414" height="580"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hW2-zc-3Pr" id="fb0-1G-osy">
@@ -105,6 +105,12 @@
                                         <constraint firstItem="g5T-i6-tpP" firstAttribute="top" secondItem="fb0-1G-osy" secondAttribute="topMargin" priority="999" constant="6" id="zrk-lH-lck"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descriptionLabel" destination="NoH-0A-Tjh" id="78O-IL-K3J"/>
+                                    <outlet property="feedImageView" destination="pIz-Ke-aBj" id="ZuZ-eZ-2F6"/>
+                                    <outlet property="locationContainer" destination="nXN-lv-vcW" id="4Xw-u4-kKk"/>
+                                    <outlet property="locationLabel" destination="U9J-b2-Ybw" id="Okk-hb-0ho"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
