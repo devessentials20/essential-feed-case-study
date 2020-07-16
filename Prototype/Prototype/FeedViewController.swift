@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedViewController: UITableViewController {
+final class FeedViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10

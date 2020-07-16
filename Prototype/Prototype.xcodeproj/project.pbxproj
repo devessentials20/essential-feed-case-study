@@ -58,11 +58,11 @@
 			children = (
 				1CD5861524BB2A2A0018F06B /* AppDelegate.swift */,
 				1CD5861724BB2A2A0018F06B /* SceneDelegate.swift */,
+				1C36399024C05E5B006B3FDB /* FeedViewController.swift */,
 				1CD5861B24BB2A2A0018F06B /* Main.storyboard */,
 				1CD5861E24BB2A4B0018F06B /* Assets.xcassets */,
 				1CD5862024BB2A4B0018F06B /* LaunchScreen.storyboard */,
 				1CD5862324BB2A4B0018F06B /* Info.plist */,
-				1C36399024C05E5B006B3FDB /* FeedViewController.swift */,
 			);
 			path = Prototype;
 			sourceTree = "<group>";
