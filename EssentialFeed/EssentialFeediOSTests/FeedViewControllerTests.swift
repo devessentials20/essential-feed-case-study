@@ -32,6 +32,13 @@ final class FeedViewController: UITableViewController {
             self?.refreshControl?.endRefreshing()
         }
     }
+    
+}
+
+extension FeedViewController {
+    func simulateUserInitiatedFeedReload() {
+        refreshControl?.simulateToPullToRefresh()
+    }
 }
 
 final class FeedViewControllerTests: XCTestCase {
@@ -50,15 +57,15 @@ final class FeedViewControllerTests: XCTestCase {
         XCTAssertEqual(loader.loadCallCount, 1)
     }
     
-    func test_pullToRefresh_LoadsFeed() {
+    func test_userInitiatedFeedReload_LoadsFeed() {
         let (sut , loader) = makeSUT()
 
         sut.loadViewIfNeeded()
         
-        sut.refreshControl?.simulateToPullToRefresh()
+        sut.simulateUserInitiatedFeedReload()
         XCTAssertEqual(loader.loadCallCount, 2)
         
-        sut.refreshControl?.simulateToPullToRefresh()
+        sut.simulateUserInitiatedFeedReload()
         XCTAssertEqual(loader.loadCallCount, 3)
     }
     
@@ -80,26 +87,23 @@ final class FeedViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.refreshControl?.isRefreshing, false)
     }
     
-    func test_pullToRefresh_ShowsLoadingIndicator() {
+    func test_userInitiatedFeedReload_ShowsLoadingIndicator() {
         let (sut , _) = makeSUT()
 
-        sut.refreshControl?.simulateToPullToRefresh()
-        
+        sut.simulateUserInitiatedFeedReload()
+
         XCTAssertEqual(sut.refreshControl?.isRefreshing, true)
     }
     
-    func test_pullToRefresh_HidesLoadingIndicatorOnLoaderCompletion() {
+    func test_userInitiatedFeedReload_HidesLoadingIndicatorOnLoaderCompletion() {
         let (sut, loader) = makeSUT()
 
-        sut.refreshControl?.simulateToPullToRefresh()
+        sut.simulateUserInitiatedFeedReload()
         loader.completeFeedLoading()
         
         XCTAssertEqual(sut.refreshControl?.isRefreshing, false)
     }
 
-
-    
-    
     
     //MARK: Helpers
     
