@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C0C7DA224D56DEE001ADC93 /* FeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0C7DA124D56DEE001ADC93 /* FeedImageDataLoader.swift */; };
 		1C3639A424C09211006B3FDB /* EssentialFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C36399B24C09210006B3FDB /* EssentialFeediOS.framework */; };
 		1C840FE424C98CF700E55BA9 /* FeedViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C840FE324C98CF700E55BA9 /* FeedViewControllerTests.swift */; };
 		1C840FEB24C99C2800E55BA9 /* EssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D59D36362433305800998793 /* EssentialFeed.framework */; platformFilter = ios; };
@@ -111,6 +112,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1C0C7DA124D56DEE001ADC93 /* FeedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoader.swift; sourceTree = "<group>"; };
 		1C36399B24C09210006B3FDB /* EssentialFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C36399E24C09211006B3FDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C3639A324C09211006B3FDB /* EssentialFeediOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeediOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,9 +216,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C0C7DA024D56D06001ADC93 /* Feed Image Loader */ = {
+			isa = PBXGroup;
+			children = (
+				1C0C7DA124D56DEE001ADC93 /* FeedImageDataLoader.swift */,
+			);
+			path = "Feed Image Loader";
+			sourceTree = "<group>";
+		};
 		1C36399C24C09211006B3FDB /* EssentialFeediOS */ = {
 			isa = PBXGroup;
 			children = (
+				1C0C7DA024D56D06001ADC93 /* Feed Image Loader */,
 				1C36399E24C09211006B3FDB /* Info.plist */,
 				1C840FF124C9C49B00E55BA9 /* FeedViewController.swift */,
 				1CA0107824CC15FF007E7DAF /* FeedImageCell.swift */,
@@ -652,6 +663,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C0C7DA224D56DEE001ADC93 /* FeedImageDataLoader.swift in Sources */,
 				1CA0107B24CD837C007E7DAF /* UIView+Shimmering.swift in Sources */,
 				1C840FF224C9C49B00E55BA9 /* FeedViewController.swift in Sources */,
 				1CA0107924CC15FF007E7DAF /* FeedImageCell.swift in Sources */,
